@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+{% extends 'extend_templates/info_page.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block page_content_block %}
+<div>
+	{% if registered %}
+	<h4>Thank you for registering {{ user.first_name }}!</h4>
+	<a href='{% url 'login' %}'>Log in now</a>
+	{% else %}
+	<form class='registration_form' id="user_form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ user_form|crispy }}
+		{{ profile_form|crispy }}
+		<button type="submit" class="btn btn-primary">Register Now!</button>
+		<!-- <input type="submit" name="submit" value="Register" /> -->
+	</form>
+	{% endif %}
+</div>
+{% endblock page_content_block %}

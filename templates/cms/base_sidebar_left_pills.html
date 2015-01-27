@@ -1,0 +1,28 @@
+{% extends 'cms/base_sidebar_left.html' %}
+
+{% load static %}
+{% load cms_tags %}
+
+{% block page_content_block %}
+{% placeholder 'page intro' %}
+<ul id='page-tabs' class="nav nav-pills nav-justified" role='tablist'>
+  <li role="presentation" class='active'><a href="#tab1" id='tab1-tab' role='tab' data-toggle='tab' aria-controls='tab1' aria-expanded='false'>{% placeholder 'tab 1 name' %}</a></li>
+  <li role="presentation"><a href="#tab2" id='tab2-tab' role='tab' data-toggle='tab' aria-controls='tab2' aria-expanded='false'>{% placeholder 'tab 2 name' %}</a></li>
+  <li role="presentation"><a href="#tab3" id='tab3-tab' role='tab' data-toggle='tab' aria-controls='tab3' aria-expanded='false'>{% placeholder 'tab 3 name' %}</a></li>
+  <li role="presentation"><a href="#tab4" id='tab4-tab' role='tab' data-toggle='tab' aria-controls='tab4' aria-expanded='false'>{% placeholder 'tab 4 name' %}</a></li>
+</ul>
+<div id='page-tab-content' class='tab-content'>
+	<div role='tabpanel' class='tab-pane fade in active' id='tab1' aria-labelledby='tab1-tab'>
+		{% placeholder 'tab 1 content' %}
+	</div>
+	<div role='tabpanel' class='tab-pane fade' id='tab2' aria-labelledby='tab2-tab'>
+		{% placeholder 'tab 2 content' %}
+	</div>
+	<div role='tabpanel' class='tab-pane fade' id='tab3' aria-labelledby='tab3-tab'>
+		{% placeholder 'tab 3 content' %}
+	</div>
+	<div role='tabpanel' class='tab-pane fade' id='tab4' aria-labelledby='tab4-tab'>
+		{% placeholder 'tab 4 content' %}
+	</div>
+</div>
+{% endblock %}

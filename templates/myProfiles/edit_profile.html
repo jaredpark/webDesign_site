@@ -1,0 +1,16 @@
+{% extends 'cms/base_sidebar_both.html' %}
+
+{% load crispy_forms_tags %}
+{% load cms_tags %}
+
+{% block page_content_block %}
+<row style='text-align:center;'>
+	{# <p><a class='btn btn-sm btn-primary' href="{% url 'auth_logout' %}?next={% url 'index' %}" style='color:#fff'>Click here</a> to log out.</p> #}
+	<p><a class='btn btn-sm btn-primary' href="{% url 'auth_logout' %}?next={% page_url 'home' %}" style='color:#fff'>Click here</a> to log out.</p>
+</row>
+<form role="form" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{ form|crispy }}
+	<button type="submit" name="contact" class="btn btn-primary">Save Changes</button>
+</form>
+{% endblock page_content_block %}

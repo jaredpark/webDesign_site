@@ -1,0 +1,53 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load menu_tags %}
+{% load polls %}
+
+<div class='left_sidebar theme-text'>
+    {% if user.is_authenticated %}
+    <h4>Hi {{ user.first_name }} welcome back</h4>
+    {% if user.get_profile.image %}
+    <img class='img-responsive' style='width:80%; margin:20px auto 0; border-radius:10px' src = '/media/{{ user.get_profile.image }}'>
+    {% endif %}
+    {% else %}
+    <form class='login_form' method="post" action="{% url 'auth_login' %}">
+        {% csrf_token %}
+        <div id='div_id_username' class='form-group required'>
+            <label for='id_username' class='control-label requiredField'>Username<span class='asteriskField'>*</span></label>
+            <div class='controls'>
+                <input class='textinput textInput form-control' id='id-username' name='username' type='text'>
+            </div>
+        </div>
+        <div style=' display:inline-block; margin: 0 auto 0;'>
+            <button type="submit" class="btn btn-sm btn-primary" style='float:left;'>Log In</button>
+            <a class='btn btn-sm btn-danger' style='float:left;display:inline;margin-left:20px' href='{% url 'registration_register' %}'>Sign Up now!</a>
+        </div>
+    </form>
+    {% endif %}
+    <ul style='margin:20px 0;'>
+    {% show_menu 0 100 100 100 %}
+    </ul>
+    <h4>Connect Today!</h4>
+    {% include 'misc_pages/social_links.html' %}
+    <br />
+    <div class="fb-like" data-share="true" data-width="200" data-show-faces="true"></div>
+    <br /><br />
+    <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true">Connect to Facebook!</div>
+    <!-- <div style='margin-top:40px;'>
+		<img src='{% static left_sidebar_img_file %}' />
+		{% if form_errors %}
+    	<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#contact_modal">
+    		Form Error/s, please try again!
+    	</button>
+    	{% elif first_name %}
+    	<a href="../about">
+    		<button type="button" class="btn btn-warning">
+    			Thank you for getting in touch {{ first_name }}.
+    		</button>
+    	</a>
+    	We'll be in touch within one business day.
+    	{% else %}
+    	<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#contact_modal">{{ call_to_action_button_text }}</button>
+    	{% endif %}
+    </div> -->
+</div>
