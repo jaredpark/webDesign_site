@@ -8,10 +8,10 @@
     {% if user.is_authenticated %}
     <h4>Hi {{ user.first_name }} welcome back</h4>
     {% if user.get_profile.image %}
-    <img class='img-responsive' style='width:80%; margin:20px auto 0; border-radius:10px' src = '/media/{{ user.get_profile.image }}'>
+    <a href='{% url 'profiles_edit_profile' %}'><img class='img-responsive' style='width:80%; margin:20px auto 0; border-radius:10px' src = '/media/{{ user.get_profile.image }}'></a>
+    {% else %}
+    <a href='{% url 'profiles_edit_profile' %}'>You don't have a picture yet</a>
     {% endif %}
-    <br/>
-    <a class='btn btn-xs btn-danger' href="{% url 'auth_logout' %}?next={% page_url 'home' %}" style='color:#fff'>Log Out</a>
     {% else %}
     <form class='login_form' method="post" action="{% url 'auth_login' %}">
         {% csrf_token %}
@@ -30,19 +30,20 @@
     <ul style='margin:20px 0;'>
     {% show_menu 0 100 100 100 %}
     </ul>
+    <a class='btn btn-danger' href="tel:+{{ company_phone_link }}">Call Us</a>
+    <br /><br />
+    {% comment %}
     <h4>Connect Today!</h4>
     {% include 'misc_pages/social_links.html' %}
+    {% endcomment %}
     <br />
     <div class="fb-like" data-share="true" data-width="200" data-show-faces="true"></div>
+    {% comment %}
     {% if not user.is_authenticated %}
     <br />
     <form action="{% url 'facebook_connect' %}" method="post">
         {% csrf_token %}
         <input type="hidden" value="{{ request.path }}" name="next" />
-        <div id="facebook_login_js">
-            <input onclick="F.connect(this.parentNode.parentNode); return false;" type="image" src="{{ STATIC_URL }}django_facebook/images/facebook_login.png" /><br />
-            (javascript popup)
-        </div>
         <br />
         <div id="facebook_login_redirect">
             <input type="image" src="{{ STATIC_URL }}django_facebook/images/facebook_login.png" /><br />
@@ -50,8 +51,11 @@
         </div>
     </form>
     {% else %}
-
     {% endif %}
+    {% endcomment %}
+    <br />
+    <br />
+    <a class='btn btn-xs btn-danger' href="{% url 'auth_logout' %}?next={% page_url 'home' %}" style='color:#fff'>Log Out</a>
     <!-- <div style='margin-top:40px;'>
 		<img src='{% static left_sidebar_img_file %}' />
 		{% if form_errors %}

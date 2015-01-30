@@ -6,6 +6,13 @@
 
 {% block page_content_block %}
 {% static_placeholder 'main_image' %}
+<div itemscope itemtype="http://schema.org/LocalBusiness">
+	<div style='text-align:center;'>On your phone or skype?<br /><br /><span itemprop="telephone"><a class='btn btn-danger' href="tel:+{{ company_phone_link }}">Call Us Now</a></span>
+	<br /><br />
+	Or call us at <h4>{{ company_phone_text }}</h4>
+	</div>
+</div>
+<br />
 {% if contact_form %}
 <form role="form" method="post" style='width:80%; margin:0 auto;'>
 {% csrf_token %}
@@ -14,6 +21,6 @@
 </form>
 {% else %}
 <h2 style='text-align:center;'>Message received - we'll get in touch in the next 24 hours.</h2>
-<p>In the meanwhile, have a look at some of the <a href='{% page_url 'features' %}'>features</a> we can integrate in to your website.</p>
+<p>For now, have a look at some of the <a href='{% page_url 'features' %}'>features</a> we can integrate in to your website.</p>
 {% endif %}
 {% endblock page_content_block %}
