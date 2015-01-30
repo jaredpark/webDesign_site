@@ -55,6 +55,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 IS_PRODUCTION = os.environ.get('IS_PRODUCTION')
 if IS_PRODUCTION is None:
     IS_PRODUCTION = False
+elif IS_PRODUCTION == 'True':
+    IS_PRODUCTION = True
 
 if IS_PRODUCTION:
     DEBUG = False
@@ -191,7 +193,7 @@ EMAIL_HOST_USER = 'jaredjamespark@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'jaredjamespark@gmail.com'
-SERVER_EMAIL = 'jaredjamespark@gmail.com'   
+SERVER_EMAIL = 'jaredjamespark@gmail.com'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
@@ -236,4 +238,8 @@ USE_L10N = True
 USE_TZ = True
 
 if not IS_PRODUCTION:
+<<<<<<< HEAD
     from settings_dev import *
+=======
+    from settings_dev import *
+>>>>>>> b4251282704318f318c97d8265a0792f3c0c549d
