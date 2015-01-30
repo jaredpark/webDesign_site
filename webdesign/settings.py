@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 project_name = 'webdesign'
+site_url = '.jpark.pythonanywhere.com'
 SITE_ID = 1
 
 import django.conf.global_settings as DEFAULT_SETTINGS
@@ -30,7 +31,17 @@ import os
 gettext = lambda s: s
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
+
+STATIC_URL = '/static/'
 STATIC_PATH = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'local_static')
+STATICFILES_DIRS = (
+    STATIC_PATH,
+    )
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
@@ -38,12 +49,21 @@ MEDIA_URL = '/media/'
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1)%qmaq%jto%k%i*=f$ol80_!hmvp&$fbgadgkiqf4k4g_r&29'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+IS_PRODUCTION = os.environ.get('IS_PRODUCTION')
+if IS_PRODUCTION is None:
+    IS_PRODUCTION = False
+elif IS_PRODUCTION == 'True':
+    IS_PRODUCTION = True
 
-TEMPLATE_DEBUG = True
+if IS_PRODUCTION:
+    DEBUG = False
+else:
+    DEBUG = True
+
+TEMPLATE_DEBUG = False
 
 AUTH_PROFILE_MODULE = 'user_interface.UserProfile'
 
@@ -52,7 +72,9 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    site_url,
+]
 
 TEMPLATE_DIRS = [
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -121,7 +143,19 @@ THIRD_PARTY_APPS = (
     'django_facebook',
 )
 
+CKEDITOR_SETTINGS = {
+    'autoParagraph': False
+}
+
 THUMBNAIL_HIGH_RESOLUTION = True
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    #'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
 
 LOCAL_APPS = (
     'myProfiles',
@@ -138,8 +172,8 @@ LOCAL_APPS = (
 
 INSTALLED_APPS = THIRD_PARTY_APPS + LOCAL_APPS + DEFAULT_APPS
 
-FACEBOOK_APP_ID = '706307349482089'
-FACEBOOK_APP_SECRET = 'ca37acdb8b70b70bcf533cdaf8830f56'
+FACEBOOK_APP_ID = os.environ.get('FACEBOOK_APP_ID')
+FACEBOOK_APP_SECRET = os.environ.get('FACEBOOK_APP_SECRET')
 
 REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 7
@@ -156,10 +190,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'jaredjamespark@gmail.com'
-EMAIL_HOST_PASSWORD = 'tnnikcwjsdarwtjk'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'jaredjamespark@gmail.com'
-SERVER_EMAIL = 'jaredjamespark@gmail.com'   
+SERVER_EMAIL = 'jaredjamespark@gmail.com'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
@@ -203,11 +237,5 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    STATIC_PATH,
-    )
+if not IS_PRODUCTION:
+    from settings_dev import *
