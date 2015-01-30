@@ -238,4 +238,8 @@ USE_L10N = True
 USE_TZ = True
 
 if not IS_PRODUCTION:
+<<<<<<< HEAD
     from settings_dev import *
+=======
+    from settings_dev import *
+>>>>>>> b4251282704318f318c97d8265a0792f3c0c549d
