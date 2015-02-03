@@ -5,6 +5,58 @@
 
 {% block page_content_block %}
 {% placeholder 'page intro' %}
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	<div class="panel">
+		<div role="tab" id="headingOne">
+				<a class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					{% placeholder 'tab 1 name' %}
+				</a>
+		</div>
+		<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+			<div class="panel-body">
+				{% placeholder 'tab 1 content' %}
+			</div>
+		</div>
+	</div>
+	<div class="panel">
+		<div role="tab" id="headingTwo">
+				<a class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					{% placeholder 'tab 2 name' %}
+				</a>
+		</div>
+		<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+			<div class="panel-body">
+				{% placeholder 'tab 2 content' %}
+				{% placeholder 'tab 2 content 2' %}
+			</div>
+		</div>
+	</div>
+	<div class="panel">
+		<div role="tab" id="headingThree">
+				<a class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					{% placeholder 'tab 3 name' %}
+				</a>
+		</div>
+		<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+			<div class="panel-body">
+				{% placeholder 'tab 3 content' %}
+			</div>
+		</div>
+	</div>
+	<div class="panel">
+		<div role="tab" id="headingFour">
+				<a class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+					{% placeholder 'tab 4 name' %}
+				</a>
+		</div>
+		<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+			<div class="panel-body">
+				{% placeholder 'tab 4 content' %}
+			</div>
+		</div>
+	</div>
+</div>
+{% comment %} for pill style:
 <ul id='page-tabs' class="nav nav-pills nav-justified" role='tablist'>
   <li role="presentation" class='active'><a href="#tab1" id='tab1-tab' role='tab' data-toggle='tab' aria-controls='tab1' aria-expanded='false'>{% placeholder 'tab 1 name' %}</a></li>
   <li role="presentation"><a href="#tab2" id='tab2-tab' role='tab' data-toggle='tab' aria-controls='tab2' aria-expanded='false'>{% placeholder 'tab 2 name' %}</a></li>
@@ -26,4 +78,5 @@
 		{% placeholder 'tab 4 content' %}
 	</div>
 </div>
+{% endcomment %}
 {% endblock %}

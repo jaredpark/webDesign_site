@@ -25,7 +25,7 @@ class ExampleForm(forms.Form):
 	# a_text_box = forms.CharField(label='A text area field, accepts multiple lines of text', max_length=400, initial='',
 	# 	widget = forms.Textarea())
 	true_or_false = forms.BooleanField(label="A logic field, allows selection of yes/no on/off", required=False, initial=True)
-	a_choice = forms.ChoiceField(label='A choice field, allows selection one option from a list', choices=(('1', 'First Choice'), ('2', 'Second Choice'), ('3', 'Third Choice')))
+	a_choice = forms.ChoiceField(label='A choice field, allows selection of one option from a list', choices=(('1', 'First Choice'), ('2', 'Second Choice'), ('3', 'Third Choice')))
 	a_multiple_choice = forms.MultipleChoiceField(label='A multiple choice field, allows selection of one or more options from a list', choices=(('1', 'First Choice'), ('2', 'Second Choice'), ('3', 'Third Choice')),
 		widget = forms.CheckboxSelectMultiple())
 	an_image = forms.ImageField(label='An image field, provides image upload tool')

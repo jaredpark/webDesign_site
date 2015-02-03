@@ -4,21 +4,10 @@
 <footer id='footer' class="navbar navbar-default navbar-bottom custom-footer theme-text" role="navigation">
   <div class="container-fluid">
     <div class='row'>
-      <div class='col-md-4 copyright'>
-        {% comment %} 
-        before cms:
-        <a class='custom-logo' href="{% url 'index' %}"><img class='img-responsive' src="{% static logo_file_name %}"></a>
-        {% endcomment %}
-        <a class='custom-logo' href="{% page_url 'home' %}"><img class='img-responsive' src="{% static logo_file_name %}"></a>
-        <a href="{% url 'contact' %}">&copy;{{ footer_copyright }}</a>
-      </div>
       <div class='col-md-4 connect'>
         <h4>Connect With Us</h4>
-        <ul class='horizontal_ul'>
-          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-        </ul>
+        <!-- {% include 'misc_pages/social_links.html' %} -->
+        {% include 'misc_pages/email.html' %}
         {% if form_errors %}
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#contact_modal">
           Form Error/s, please try again!
@@ -49,6 +38,14 @@
           <li><a href="{% page_url navbar_link2_name %}">{{ navbar_link2_text }}</a></li>
           <li><a href="{% url navbar_link3_name %}">{{ navbar_link3_text }}</a></li>
         </ul>
+      </div>
+      <div class='col-md-4 copyright'>
+        {% comment %} 
+        before cms:
+        <a class='custom-logo' href="{% url 'index' %}"><img class='img-responsive' src="{% static logo_file_name %}"></a>
+        {% endcomment %}
+        <a class='custom-logo' href="{% page_url 'home' %}"><img class='img-responsive' src="{% static logo_file_name %}"></a>
+        <a href="{% url 'contact' %}">&copy;{{ footer_copyright }}</a>
       </div>
   </div>
 </footer>

@@ -32,12 +32,14 @@
     </ul>
     <a class='btn btn-danger' href="tel:+{{ company_phone_link }}">Call Us</a>
     <br /><br />
+    {% include 'misc_pages/email.html' %}
+    <br />
     {% comment %}
     <h4>Connect Today!</h4>
     {% include 'misc_pages/social_links.html' %}
     {% endcomment %}
     <br />
-    <div class="fb-like" data-share="true" data-width="200" data-show-faces="true"></div>
+    <div class="fb-like" data-share="true" data-width="120" data-show-faces="true"></div>
     {% comment %}
     {% if not user.is_authenticated %}
     <br />

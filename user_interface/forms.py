@@ -5,9 +5,10 @@ from django.contrib.auth.models import User
 from registration.forms import RegistrationForm
 
 class MyRegistrationForm(RegistrationForm):
-	first_name = forms.CharField(label='First Name')
-	last_name = forms.CharField(label='Last Name')
-	zipcode = forms.IntegerField(label='Home Zip Code')
+	first_name = forms.CharField(label='Your First Name')
+	last_name = forms.CharField(label='Your Last Name')
+	business_name = forms.CharField(label='Your Business Name (leave blank if none)', required=False)
+	business_zipcode = forms.IntegerField(label='Business Zip Code (leave blank if none)', required=False)
 
 class MyProfileForm(ModelForm):
 	# def __init__(self, *args, **kwargs):
