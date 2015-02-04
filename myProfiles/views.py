@@ -6,7 +6,7 @@ Views for creating, editing and viewing site-specific user profiles.
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.http import Http404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -27,6 +27,9 @@ def profile_detail(request, username=None, public_profile_field='public',
                    extra_context=None):
     if username is None:
         username = request.user.username
+    if username == '':
+        return(HttpResponseRedirect(reverse('auth_login')))
+    
     """
     Detail view of a user's profile.
     

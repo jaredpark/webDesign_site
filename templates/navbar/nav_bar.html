@@ -16,8 +16,8 @@
         <li><a href="{% page_url 'user_profile' %}">My Account</a></li>
         {% else %}
         <div id='signup_login'>
-          <a class='btn btn-xs btn-danger' href="{% url 'registration_register' %}">Sign Up</a>
-          <a class='btn btn-xs btn-primary' href="{% url 'auth_login' %}">Login</a>
+          <a class='btn btnn-sm btn-danger' href="{% url 'registration_register' %}">Sign Up</a>
+          <a class='btn btn-sm btn-primary' href="{% url 'auth_login' %}">Login</a>
         </div>
         {% endif %}
         <li><a href="{% page_url navbar_link1_name %}"> {{ navbar_link1_text }} </a>

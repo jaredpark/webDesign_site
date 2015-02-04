@@ -3,6 +3,7 @@ from django.conf.urls import patterns, url
 from user_interface.models import MyProfileForm
 
 from myProfiles import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = patterns('',
   # url(r'^create/$',

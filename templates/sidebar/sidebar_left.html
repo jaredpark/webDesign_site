@@ -57,7 +57,9 @@
     {% endcomment %}
     <br />
     <br />
+    {% if user.is_authenticated %}
     <a class='btn btn-xs btn-danger' href="{% url 'auth_logout' %}?next={% page_url 'home' %}" style='color:#fff'>Log Out</a>
+    {% endif %}
     <!-- <div style='margin-top:40px;'>
 		<img src='{% static left_sidebar_img_file %}' />
 		{% if form_errors %}

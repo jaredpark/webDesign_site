@@ -5,8 +5,7 @@
 
 {% block page_content_block %}
 <row style='text-align:center;'>
-	{# <p><a class='btn btn-sm btn-primary' href="{% url 'auth_logout' %}?next={% url 'index' %}" style='color:#fff'>Click here</a> to log out.</p> #}
-	<p><a class='btn btn-sm btn-primary' href="{% url 'auth_logout' %}?next={% page_url 'home' %}" style='color:#fff'>Click here</a> to log out.</p>
+<h4 style='margin:20px 0;'>Update account information for {{ user.username }}</h4>
 </row>
 <form role="form" method="post" enctype="multipart/form-data">
 	{% csrf_token %}

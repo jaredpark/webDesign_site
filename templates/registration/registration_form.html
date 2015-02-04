@@ -1,12 +1,11 @@
-{% extends 'cms/base_sidebar_both.html' %}
+{% extends 'cms/base_sidebar_left.html' %}
 
 {% load crispy_forms_tags %}
 
 {% block page_content_block %}
-<div>
-	{% if registered %}
-	<h4>Thank you for registering {{ user.first_name }}!</h4>
-	<a href='{% url 'login' %}'>Log in now</a>
+<div style='text-align:center;margin-top:20px;'>
+	{% if user.is_authenticated %}
+	<h4>Welcome back {{ user.first_name }}! <a style='text-decoration:none;' href="{% url 'profiles_profile_detail' user.username %}">View your account</a></h4>
 	{% else %}
 	<form class='registration_form' id="user_form" method="post" action="." enctype="multipart/form-data">
 		{% csrf_token %}

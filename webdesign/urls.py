@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from homepage import views
 
-from user_interface.forms import MyRegistrationForm, MyProfileForm
+from myProfiles.forms import MyRegistrationForm, MyProfileForm
 from registration.backends.default.views import RegistrationView
 
 admin.autodiscover()
