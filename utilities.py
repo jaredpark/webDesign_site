@@ -86,3 +86,14 @@ class ContentTypeRestrictedImageField(ImageField):
 			pass        
 
 		return data
+
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules([
+	(
+		[ContentTypeRestrictedImageField], # Class(es) these apply to
+		[],         # Positional arguments (not used)
+		{           # Keyword argument
+			"max_upload_size": ["max_upload_size", {}],
+		},
+	),
+	], ["^utilities\.ContentTypeRestrictedImageField"])

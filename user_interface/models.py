@@ -21,9 +21,17 @@ class UserProfile(FacebookProfileModel):
 	zipcode = models.IntegerField(default=85111,blank=False, max_length=5)
 	phone = models.CharField(default='',blank=True, max_length=12)
 	email = models.EmailField(default='',blank=True, max_length=40)
-	next_appointment = models.DateTimeField(auto_now_add=True,blank=True)
-	balance = models.DecimalField(default=0.0,blank=True,max_digits=6,decimal_places=2)
-	dog = models.BooleanField(default=False,blank=True)
+	# next_appointment = models.DateTimeField(auto_now_add=True,blank=True)
+	# balance = models.DecimalField(default=0.0,blank=True,max_digits=6,decimal_places=2)
+	# dog = models.BooleanField(default=False,blank=True)
+	web_url = models.URLField(blank=True,null=True)
+	NONE = 'None'
+	BASIC = 'Basic'
+	PREMIUM = 'Premium'
+	support_plan_choices = ((NONE, 'None'), (BASIC, 'Basic'), (PREMIUM, 'Premium'))
+	support_plan = models.CharField(default = NONE, choices = support_plan_choices, max_length=7)
+	current_balance = models.DecimalField(default=0.00,blank=True, max_digits=6,decimal_places=2)
+	balance_due_date = models.DateField(blank=True, null=True)
 	public = models.BooleanField(default=False,blank=True)
 	notes = models.TextField(default='',blank=True,max_length=200)
 
@@ -47,8 +55,10 @@ class UserProfile(FacebookProfileModel):
 		profile.first_name = request.POST["first_name"]
 		profile.last_name = request.POST["last_name"]
 		profile.email = request.POST["email"]
-		profile.zipcode = int(request.POST["zipcode"])
-		profile.next_appointment = ''
+		if request.POST["business_zipcode"] == '':
+			pass
+		else:
+			profile.zipcode = int(request.POST["business_zipcode"])
 		profile.save()
 		user.first_name = request.POST["first_name"]
 		user.last_name = request.POST["last_name"]

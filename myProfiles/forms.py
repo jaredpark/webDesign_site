@@ -8,7 +8,7 @@ class MyRegistrationForm(RegistrationForm):
 	first_name = forms.CharField(label='Your First Name')
 	last_name = forms.CharField(label='Your Last Name')
 	business_name = forms.CharField(label='Your Business Name (leave blank if none)', required=False)
-	business_zipcode = forms.IntegerField(label='Business Zip Code (leave blank if none)', required=False)
+	business_zipcode = forms.IntegerField(label='Business Zip Code (home if none)', required=True)
 
 class MyProfileForm(ModelForm):
 	# def __init__(self, *args, **kwargs):
