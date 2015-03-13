@@ -1,5 +1,5 @@
 """
-Django settings for webdesign project.
+Django settings for caspraypros project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -8,7 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 project_name = 'webdesign'
-site_url = '.jpark.pythonanywhere.com'
+site_url = '.zparkweb.com'
 SITE_ID = 1
 
 import django.conf.global_settings as DEFAULT_SETTINGS
@@ -65,7 +65,7 @@ else:
 
 TEMPLATE_DEBUG = False
 
-AUTH_PROFILE_MODULE = 'user_interface.UserProfile'
+AUTH_PROFILE_MODULE = 'myProfiles.UserProfile'
 
 AUTHENTICATION_BACKENDS = (
     'django_facebook.auth_backends.FacebookBackend',
@@ -87,7 +87,6 @@ TEMPLATE_DIRS = [
 CMS_TEMPLATES = (
     ('cms/template_1.html', gettext('Template One')),
     ('cms/index.html', gettext('Index')),
-    ('cms/index.html', gettext('Index')),
     ('cms/base_sidebar_left.html', gettext('Base Sidebar L')),
     ('cms/base_sidebar_both.html', gettext('Base Sidebar L+R')),
     ('cms/base_sidebar_left_pills.html', gettext('Base Sidebar L Pills')),
@@ -107,6 +106,8 @@ CMS_PLACEHOLDER_CONF = {
         'plugins': ['TextPlugin'],
     },
 }
+
+CMS_SEO_FIELDS = True
 
 # Application definition
 DEFAULT_APPS = (
@@ -139,7 +140,6 @@ THIRD_PARTY_APPS = (
     'cmsplugin_filer_teaser',
     'cmsplugin_filer_video',
     'polls',
-    'djangocms_polls',
     'django_facebook',
 )
 
@@ -159,15 +159,9 @@ THUMBNAIL_PROCESSORS = (
 
 LOCAL_APPS = (
     'myProfiles',
+    'myQuotes',
     'homepage',
-    'navbar',
-    'footer',
-    'sidebar',
-    'user_interface',
     'contact',
-    'contact_form',
-    'call_to_action',
-    'carousel',
 )
 
 INSTALLED_APPS = THIRD_PARTY_APPS + LOCAL_APPS + DEFAULT_APPS

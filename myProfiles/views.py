@@ -103,8 +103,6 @@ def profile_detail(request, username=None, public_profile_field='public',
                               { 'profile': profile_obj },
                               context_instance=context)
 
-from user_interface.models import MyProfileForm
-
 def edit_profile(request, form_class=None, success_url=None,
                  template_name='myProfiles/edit_profile.html',
                  extra_context=None):

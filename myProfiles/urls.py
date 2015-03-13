@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 # from user_interface.forms import MyProfileForm
-from user_interface.models import MyProfileForm
+from myProfiles.forms import MyProfileForm
 
 from myProfiles import views
 from django.contrib.auth import views as auth_views

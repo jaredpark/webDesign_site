@@ -55,15 +55,16 @@
   }(document, 'script', 'facebook-jssdk'));
   //-->
   </script>
-  {% include 'navbar/nav_bar.html' %}
-  <div id='base_body_wrapper'>
-    {% include 'call_to_action/call_to_action.html' %}
-    {% placeholder base_content %}
+    {% include 'navbar/nav.html' %}
+  <div id='body_wrapper'>
+{#    {% include 'call_to_action/call_to_action.html' %} #}
+{#    {% placeholder base_content %} #}
     {% block body_block %}{% endblock %}
+    {% include 'footer/footer.html' %}
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
   <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
   {% render_block "js" %}
 </body>
-{% include 'footer/footer.html' %}
+{# {% include 'footer/footer.html' %} #}
 </html>

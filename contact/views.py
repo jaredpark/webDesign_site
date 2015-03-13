@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from contact.forms import ContactForm
+from contact.forms import ContactForm, CouponForm
 from django.core.mail import send_mail
 from context_processors import site_settings_processor
-from utilities import ContactFormProcessor, ExampleFormProcessor
+from utilities import ContactFormProcessor, CouponFormProcessor
 
 from django.template.context import RequestContext
 
@@ -12,7 +12,7 @@ def contact(request):
 	ContactFormProcessor(request, context_dictionary)
 	return(render(request, 'contact/contact.html', context_dictionary))
 
-def example_form(request):
+def specials(request):
 	context_dictionary = {}
-	ExampleFormProcessor(request, context_dictionary)
-	return(render(request, 'contact/example_form.html', context_dictionary))
+	CouponFormProcessor(request, context_dictionary)
+	return(render(request, 'contact/specials.html', context_dictionary))
